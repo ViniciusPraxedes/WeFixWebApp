@@ -1,0 +1,276 @@
+/*Global*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+/*Nav bar*/
+nav h1 {
+    color: #fff;
+}
+
+.text-primary {
+    color: #93cb52;
+}
+
+nav {
+    background-color: #333;
+    overflow: auto;
+    display: flex;
+    justify-content: space-between;
+    z-index: 1;
+    padding: 1rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    padding: 0.75rem;
+    margin: 0 0.25rem;
+}
+
+a:hover {
+    background-color: #93cb52;
+    border-radius: 5px;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+/*Showcase*/
+header {
+    background: #333 url('https://images.pexels.com/photos/4449796/pexels-photo-4449796.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-size: cover;
+    color: #fff;
+    height: 100vh;
+}
+
+#showcase {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 0 2rem;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#showcase h1 {
+    font-size: 4rem;
+    margin-bottom: 30px;
+    line-height: 1.1;
+}
+
+#showcase p {
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+}
+
+.button {
+    width: 140px;
+    height: 45px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    background-color: #93cb52;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+
+.button:hover {
+    background-color: #2EE59D;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+}
+
+/*What we do section*/
+.container {
+    overflow: hidden;
+    margin: auto;
+    max-width: 100%;
+    padding: 40px 0;
+}
+
+.container h2 {
+    text-align: center;
+    font-size: 40px;
+}
+
+.boxes {
+    padding: 40px;
+    display: flex;
+}
+
+.box {
+    flex: 1;
+    text-align: center;
+    padding: 1rem;
+}
+
+.box p {
+    line-height: 1.3;
+    margin-top: 1rem;
+}
+
+.box i {
+    background-color: #93cb52;
+    border-radius: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease 0s;
+}
+
+.box i:hover {
+    background-color: #2EE59D;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+    cursor: pointer;
+}
+
+/*Who we are section*/
+#who-we-are {
+    display: flex;
+}
+
+#who-we-are div {
+    flex: 1;
+}
+
+#who-we-are-img {
+    background: url('https://images.pexels.com/photos/13625784/pexels-photo-13625784.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center/cover;
+}
+
+#who-we-are-container {
+    background-color: #333;
+    color: #fff;
+    padding: 40px;
+    line-height: 2;
+}
+
+#who-we-are-container h2 {
+    font-size: 40px;
+    padding-bottom: 1rem;
+}
+
+#who-we-are-container h3 {
+    margin-top: 1rem;
+}
+
+#who-we-are-container li {
+    list-style: none;
+    border-bottom: #444 dotted 1px;
+    margin: 1rem 0 1rem 0;
+}
+
+/*Clients section*/
+#clients h2 {
+    padding-bottom: 2rem;
+    font-size: 40px;
+}
+
+.items {
+    padding: 1rem;
+    text-align: center;
+}
+
+.items img {
+    width: 10%;
+    margin: 0 1.5rem 0 1.5rem;
+
+}
+
+
+/*Contact Us*/
+#contact-us {
+    display: flex;
+}
+
+.contact-us-container {
+    background-color: #93cb52;
+    padding: 40px;
+    color: #fff;
+}
+
+.contact-us-container h2 {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+.contact-us-container p {
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.contact-us-container input, .contact-us-container textarea {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.contact-us-container label {
+    font-size: 18px;
+}
+
+.form-group {
+    padding-left: 1rem;
+}
+
+.contact-us-container button {
+    margin-top: 1rem;
+    width: 100%;
+    height: 30px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    background-color: #333;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+
+.contact-us-container button:hover {
+    background-color: #2EE59D;
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+}
+
+#map {
+    width: 100%;
+}
+
+/*Footer*/
+footer {
+    background-color: #333;
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+}
+
+footer p {
+    padding-top: 1rem;
+}
