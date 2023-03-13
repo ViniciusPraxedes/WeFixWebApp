@@ -27,6 +27,7 @@
         <li><a href="#who-we-are">Who we are</a></li>
         <li><a href="#contact-us">Contact us</a></li>
         <li><a href="/WeFix/customer">Budgeting</a></li>
+        <li><a href="/login">Login</a></li>
 
     </ul>
 </nav>
@@ -86,28 +87,28 @@
 
         <form>
             <div class="form-group">
-                <label for="Name">Name</label>
+                <label>Name</label>
                 <input type="text" name="Name" value="">
             </div>
         </form>
 
         <form>
             <div class="form-group">
-                <label for="Email">E-mail</label>
+                <label>E-mail</label>
                 <input type="text" name="Enter Email" value="">
             </div>
         </form>
 
         <form>
             <div class="form-group">
-                <label for="Number">Phone number</label>
+                <label >Phone number</label>
                 <input type="text" name="Phone Number" value="">
             </div>
         </form>
 
         <form>
             <div class="form-group">
-                <label for="Text">Text</label>
+                <label>Text</label>
                 <textarea name="Text" rows="8" cols="80"></textarea>
             </div>
             <button type="button" name="Send">Send</button>
