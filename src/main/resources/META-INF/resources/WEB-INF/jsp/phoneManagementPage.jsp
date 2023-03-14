@@ -65,6 +65,7 @@
         <table class="table table-bordered">
             <thead class="thead-dark">
             <tr>
+                <th>Phone id: </th>
                 <th>Customer name: </th>
                 <th>Phone model: </th>
             </tr>
@@ -72,6 +73,7 @@
             <tbody>
             <c:forEach items="${phones}" var="phone">
                 <tr>
+                    <td>${phone.id}</td>
                     <td>${phone.customer}</td>
                     <td>${phone.model}</td>
                     <td><a href="deletePhone?id=${phone.id}" class="btn btn-danger">DELETE FROM DATABASE</a> </td>

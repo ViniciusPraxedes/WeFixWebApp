@@ -14,6 +14,7 @@ import java.util.List;
 @Controller
 public class CustomerController {
     private CustomerRepository customerRepository;
+    private int idCounter = 0;
 
     public CustomerController(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
@@ -30,7 +31,7 @@ public class CustomerController {
     //Display the add customer page
     @RequestMapping(value = "/WeFix/customer", method = RequestMethod.GET)
     public String displayCustomerPage(ModelMap model){
-        Customer customer = new Customer(0,"","","");
+        Customer customer = new Customer(idCounter++,"","","");
         model.addAttribute("customer",customer);
         return "customerPage";
     }
@@ -41,7 +42,7 @@ public class CustomerController {
         if(bindingResult.hasErrors()){
             return "customerPage";
         }
-
+        customer.setId(idCounter);
         customerRepository.save(customer);
         System.out.println(customer);
         return "redirect:/WeFix/customer/phone";

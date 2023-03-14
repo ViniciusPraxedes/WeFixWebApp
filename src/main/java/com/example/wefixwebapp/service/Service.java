@@ -1,13 +1,11 @@
 package com.example.wefixwebapp.service;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
 @Entity
 public class Service {
     @Id
-    @GeneratedValue
     private int id;
     private String serviceName;
     private String description;

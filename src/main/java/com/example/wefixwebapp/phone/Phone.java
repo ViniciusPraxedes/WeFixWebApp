@@ -1,14 +1,12 @@
 package com.example.wefixwebapp.phone;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 public class Phone {
     @Id
-    @GeneratedValue
     private int id;
     @NotEmpty
     private String model;

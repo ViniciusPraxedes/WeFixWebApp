@@ -17,6 +17,8 @@ public class PhoneController {
     private PhoneRepository phoneRepository;
     private CustomerRepository customerRepository;
 
+    private  int idCounter = 0;
+
     public PhoneController(PhoneRepository phoneRepository, CustomerRepository customerRepository) {
         this.phoneRepository = phoneRepository;
         this.customerRepository = customerRepository;
@@ -33,7 +35,7 @@ public class PhoneController {
     //Display add phone page
     @RequestMapping(value = "/WeFix/customer/phone", method = RequestMethod.GET)
     public String displayPhonePage(ModelMap model){
-        Phone phone = new Phone(0,"", "");
+        Phone phone = new Phone(idCounter++,"", "");
         model.addAttribute("phone",phone);
         return "phonePage";
     }
@@ -44,10 +46,10 @@ public class PhoneController {
         if (bindingResult.hasErrors()){
             return "landingPage";
         }
-        int counter = (int) customerRepository.count();
-        String customerName = customerRepository.getReferenceById(counter).getName();
+        System.out.println(idCounter);
+        String customerName = getCustomerNameById(idCounter);
         phone.setCustomer(customerName);
-        phone.setId(counter);
+        phone.setId(idCounter);
         System.out.println(phone);
         phoneRepository.save(phone);
         return "redirect:/WeFix/customer/phone/service";
@@ -58,5 +60,21 @@ public class PhoneController {
     public String deletePhone(@RequestParam int id){
         phoneRepository.deleteById(id);
         return "redirect:phoneManagement";
+    }
+    public String getCustomerNameById(int id) {
+        int i = 0;
+        String returnString;
+        do{
+            i++;
+            if (i == customerRepository.getReferenceById(id).getId()){
+                returnString = customerRepository.getReferenceById(id).getName();
+                break;
+            }
+            if (i > id){
+                returnString = "unable to find";
+                break;
+            }
+        }while (true);
+        return returnString;
     }
 }

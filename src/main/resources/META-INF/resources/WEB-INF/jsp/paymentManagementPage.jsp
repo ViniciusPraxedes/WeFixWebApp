@@ -65,6 +65,7 @@
         <table class="table table-bordered">
             <thead class="thead-dark">
             <tr>
+                <th>Payment id: </th>
                 <th>Customer name: </th>
                 <th>Service name: </th>
                 <th>Value: </th>
@@ -75,6 +76,7 @@
             <tbody>
             <c:forEach items="${payments}" var="payment">
                 <tr>
+                    <td>${payment.id}</td>
                     <td>${payment.customerName}</td>
                     <td>${payment.serviceName}</td>
                     <td>${payment.value}</td>

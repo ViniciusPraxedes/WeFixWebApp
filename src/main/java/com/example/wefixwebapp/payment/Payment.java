@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
 @Table(name = "Transaction")
 public class Payment {
     @Id
-    @GeneratedValue
     private int id;
     private String customerName;
     @Column(name="amount")

@@ -7,8 +7,9 @@ import jakarta.validation.constraints.*;
 
 @Entity
 public class Customer {
+
+
     @Id
-    @GeneratedValue
     private int id;
     @NotEmpty
     private String name;
@@ -27,7 +28,6 @@ public class Customer {
     }
 
     public Customer() {
-
     }
 
     @Override

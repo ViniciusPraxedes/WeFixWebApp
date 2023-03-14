@@ -21,6 +21,8 @@ public class PaymentController {
     private PaymentRepository paymentRepository;
     private ServiceRepository serviceRepository;
 
+    private  int idCounter = 0;
+
     public PaymentController(CustomerRepository customerRepository, PaymentRepository paymentRepository, ServiceRepository serviceRepository) {
         this.customerRepository = customerRepository;
         this.paymentRepository = paymentRepository;
@@ -38,7 +40,7 @@ public class PaymentController {
     //Display add payment page
     @RequestMapping(value = "/WeFix/customer/phone/service/payment",method = RequestMethod.GET)
     public String displayPaymentPage(ModelMap paymentModel){
-        Payment payment = new Payment(0,"",0,"", LocalDateTime.now(),false);
+        Payment payment = new Payment(idCounter++,"",0,"", LocalDateTime.now(),false);
         paymentModel.addAttribute("payment",payment);
         return "paymentPage";
     }
@@ -49,13 +51,13 @@ public class PaymentController {
         if (bindingResult.hasErrors()){
             return "paymentPage";
         }
-        int counter = (int) customerRepository.count();
-        String customerName = customerRepository.getReferenceById(counter).getName();
-        String serviceName = serviceRepository.getReferenceById(counter).getServiceName();
+        String customerName = getCustomerNameById(idCounter);
+        String serviceName = getServiceNameById(idCounter);
         payment.setServiceName(serviceName);
         payment.setCustomerName(customerName);
         payment.setPaid(true);
         payment.setTime(LocalDateTime.now());
+        payment.setId(idCounter);
         paymentRepository.save(payment);
         System.out.println(payment);
         return "paymentSuccess";
@@ -86,5 +88,37 @@ public class PaymentController {
     public String deletePayment(@RequestParam int id){
         paymentRepository.deleteById(id);
         return "redirect:paymentManagement";
+    }
+    public String getCustomerNameById(int id) {
+        int i = 0;
+        String returnString;
+        do{
+            i++;
+            if (i == customerRepository.getReferenceById(id).getId()){
+                returnString = customerRepository.getReferenceById(id).getName();
+                break;
+            }
+            if (i > id){
+                returnString = "unable to find";
+                break;
+            }
+        }while (true);
+        return returnString;
+    }
+    public String getServiceNameById(int id) {
+        int i = 0;
+        String returnString;
+        do{
+            i++;
+            if (i == serviceRepository.getReferenceById(id).getId()){
+                returnString = serviceRepository.getReferenceById(id).getServiceName();
+                break;
+            }
+            if (i > id){
+                returnString = "unable to find";
+                break;
+            }
+        }while (true);
+        return returnString;
     }
 }

@@ -118,7 +118,7 @@
 </section>
 
 <footer>
-    <p>Copyright © 2023, WeFix, All Rights Reserved</p>
+    <p>WeFix, Vinicius Praxedes, 2023</p>
 </footer>
 
 <!--Scripts-->

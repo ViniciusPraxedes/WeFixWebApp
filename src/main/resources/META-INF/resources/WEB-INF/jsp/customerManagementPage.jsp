@@ -65,6 +65,7 @@
         <table class="table table-bordered">
             <thead class="thead-dark">
             <tr>
+                <th>Customer id: </th>
                 <th>Customer name: </th>
                 <th>Customer phone number: </th>
                 <th>Customer email: </th>
@@ -73,6 +74,7 @@
             <tbody>
             <c:forEach items="${customers}" var="customer">
                 <tr>
+                    <td>${customer.id}</td>
                     <td>${customer.name}</td>
                     <td>${customer.number}</td>
                     <td>${customer.email}</td>

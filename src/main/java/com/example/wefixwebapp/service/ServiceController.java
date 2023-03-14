@@ -19,6 +19,9 @@ public class ServiceController {
     private CustomerRepository customerRepository;
     private PhoneRepository phoneRepository;
 
+    private int idCounter = 0;
+
+
     public ServiceController(ServiceRepository serviceRepository, CustomerRepository customerRepository, PhoneRepository phoneRepository) {
         this.serviceRepository = serviceRepository;
         this.customerRepository = customerRepository;
@@ -35,7 +38,7 @@ public class ServiceController {
     //Display add service page
     @RequestMapping(value = "/WeFix/customer/phone/service", method = RequestMethod.GET)
     public String displayBudgetingPage(ModelMap model){
-        Service service = new Service(0,"","","","",false);
+        Service service = new Service(idCounter++,"","","","",false);
         model.addAttribute("service",service);
         return "servicePage";
     }
@@ -46,9 +49,6 @@ public class ServiceController {
         if (bindingResult.hasErrors()){
             return "landingPage";
         }
-        int counter = (int) customerRepository.count();
-        service.setId(counter);
-
         if (service.getServiceName().equals("hardware fix")){
             service.setDescription("we will fix your hardware");
         }
@@ -59,10 +59,12 @@ public class ServiceController {
             service.setDescription("we will do a check up");
         }
 
-        String customerName = customerRepository.getReferenceById(counter).getName();
-        String phoneModel = phoneRepository.getReferenceById(counter).getModel();
+
+        String customerName = getCustomerNameById(idCounter);
+        String phoneModel = getPhoneNameById(idCounter);
         service.setCustomerName(customerName);
         service.setPhoneModel(phoneModel);
+        service.setId(idCounter);
         System.out.println(service);
         serviceRepository.save(service);
         return "redirect:/WeFix/customer/phone/service/payment";
@@ -90,5 +92,38 @@ public class ServiceController {
     public String deleteService(@RequestParam int id){
         serviceRepository.deleteById(id);
         return "redirect:serviceManagement";
+    }
+
+    public String getCustomerNameById(int id) {
+        int i = 0;
+        String returnString;
+        do{
+            i++;
+            if (i == customerRepository.getReferenceById(id).getId()){
+                returnString = customerRepository.getReferenceById(id).getName();
+                break;
+            }
+            if (i > id){
+                returnString = "unable to find";
+                break;
+            }
+        }while (true);
+        return returnString;
+    }
+    public String getPhoneNameById(int id) {
+        int i = 0;
+        String returnString;
+        do{
+            i++;
+            if (i == phoneRepository.getReferenceById(id).getId()){
+                returnString = phoneRepository.getReferenceById(id).getModel();
+                break;
+            }
+            if (i > id){
+                returnString = "unable to find";
+                break;
+            }
+        }while (true);
+        return returnString;
     }
 }
